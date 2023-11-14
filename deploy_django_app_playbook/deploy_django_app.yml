@@ -7,13 +7,13 @@
   tasks:
     - name: Include Common System Configuration Role
       include_role:
-        name: /home/ubuntu/my-ansible-project/roles/common
+        name: /home/ubuntu/my_ansible_project_2/roles/common
       tags:
         - common
 
     - name: Include Django Deployment Role
       include_role:
-        name: /home/ubuntu/my-ansible-project/roles/django-deployment
+        name: /home/ubuntu/my_ansible_project_2/roles/django-deployment
       tags:
         - django-deployment
 
