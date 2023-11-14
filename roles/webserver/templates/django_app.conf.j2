@@ -1,0 +1,18 @@
+
+server {
+    listen 80;
+    server_name {{ ansible_host }} ;
+
+    location = /favicon.ico { access_log off; log_not_found off; }
+
+    location /static/ {
+        root /opt/django-app;  # Adjust the path to your static directory
+    }
+
+    location / {
+        include proxy_params;
+        proxy_pass http://unix:/opt/django-app/gunicorn.sock;  # Use the gunicorn socket
+    }
+
+}
+

@@ -1,0 +1,13 @@
+---
+- name: Clone GitHub Repository
+  git:
+    repo: https://github.com/mazhrik/card_project.git
+    dest: /opt/django-app
+    version: master  # Replace with your preferred branch or tag
+    force : yes
+  become: yes
+- name: Install Python Dependencies
+  pip:
+    requirements: /opt/django-app/requirements.txt
+  become: yes
+
