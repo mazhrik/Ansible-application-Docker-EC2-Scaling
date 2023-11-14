@@ -14,12 +14,6 @@
 #   become: yes
 #   when: not (ansible_check_mode | bool)
 
-- name: Remove existing Nginx default configuration file
-  file:
-    path: /etc/nginx/sites-available/default
-    state: absent
-  become: yes
-  
 - name: Deploy Nginx Configuration for Django App
   template:
     src: django_app.conf.j2
@@ -29,6 +23,6 @@
 - name: Enable Nginx Site for Django App
   file:
     src: /etc/nginx/sites-available/default
-    dest: /etc/nginx/sites-available/default
+    dest: /etc/nginx/sites-enabled/default
     state: link
   become: yes
