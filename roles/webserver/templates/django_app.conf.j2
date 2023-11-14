@@ -1,3 +1,9 @@
+upstream your_django_app {
+    server {{ ansible_host }}:8001;
+    server {{ ansible_host }}:8002;
+    server {{ ansible_host }}:8003;
+  
+}
 
 server {
     listen 80;
@@ -11,7 +17,7 @@ server {
 
     location / {
         include proxy_params;
-        proxy_pass http://unix:/opt/django-app/gunicorn.sock;  # Use the gunicorn socket
+        proxy_pass http://your_django_app;  # Use the gunicorn socket
     }
 
 }
