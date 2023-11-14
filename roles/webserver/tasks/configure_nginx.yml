@@ -17,12 +17,12 @@
 - name: Deploy Nginx Configuration for Django App
   template:
     src: django_app.conf.j2
-    dest: /etc/nginx/sites-available/django_app
+    dest: /etc/nginx/sites-available/default
   become: yes
 
 - name: Enable Nginx Site for Django App
   file:
-    src: /etc/nginx/sites-available/django_app
-    dest: /etc/nginx/sites-enabled/django_app
+    src: /etc/nginx/sites-available/default
+    dest: /etc/nginx/sites-available/default
     state: link
   become: yes
