@@ -1,0 +1,11 @@
+- name: Run Docker Containers
+  docker_container:
+    name: your-django-container-{{ item }}
+    image: your-django-app
+    state: started
+    ports:
+      - "800{{ item }}:8000"  # Adjust the port mapping as needed
+    volumes:
+      - /opt/django-app:/app  # Mount your project directory into the container
+  with_sequence: start=1 end=3
+  become: yes

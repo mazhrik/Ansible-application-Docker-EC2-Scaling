@@ -1,0 +1,21 @@
+# roles/your_role/tasks/build_docker_image.yml
+
+- name: Create Dockerfile
+  template:
+    src: Dockerfile.j2
+    dest:  /opt/django-app/Dockerfile
+  become: yes
+
+- name: Build Docker Image
+  docker_image:
+    name: your-django-app
+    path: /opt/django-app/
+    state: present
+  become: yes
+
+- name: Run Docker Compose
+  docker_compose:
+    project_src: /opt/django-app
+    docker_compose_path: /opt/django-app/docker-compose.yml
+    state: present
+  become: yes

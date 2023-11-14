@@ -6,8 +6,4 @@
     version: master  # Replace with your preferred branch or tag
     force : yes
   become: yes
-- name: Install Python Dependencies
-  pip:
-    requirements: /opt/django-app/requirements.txt
-  become: yes
 
